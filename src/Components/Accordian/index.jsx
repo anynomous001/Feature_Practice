@@ -6,31 +6,47 @@ export default function Accordian() {
 
     const [selected, setSelected] = React.useState(null)
     const [multiSelection, setMultiSelection] = React.useState(false)
+    const [multi, setMulti] = React.useState([])
+
 
     function handleClick(id) {
         selected === id ? setSelected(null) : setSelected(id)
     }
-    function handleMultiClick() {
-        setMultiSelection(!multiSelection)
+
+    function handleMultiClick(id) {
+        const copyMulti = [...multi]
+
+        const indexofItem = copyMulti.indexOf(id)
+
+        if (indexofItem === -1) {
+            copyMulti.push(id)
+        } else {
+            copyMulti.splice(indexofItem, 1)
+        }
+        setMulti(copyMulti)
     }
-    console.log(selected)
     return (
-        <div>
+        <div className='outer-container'>
             <div className="container">
                 {/* For Multi selection*/}
 
-                <button onClick={handleMultiClick}>Multi Selection</button>
+                <button className='multi-btn' onClick={() => setMultiSelection(!multiSelection)}>Enable Multi Selection</button>
                 {/* For single selection*/}
                 {
                     data && data.length > 0 ? (
                         data.map(item => (
-                            <div key={item.age} onClick={() => handleClick(item.age)}>
+                            <div key={item.age} onClick={multiSelection ? () => handleMultiClick(item.age) : () => handleClick(item.age)}>
                                 <h2 >{item.name}</h2>
                                 <span>+</span>
-                                {
-                                    selected == item.age || multiSelection ? <div>
+                                {multiSelection ?
+                                    multi.indexOf(item.age) !== -1 &&
+                                    (<div>
                                         <p>{item.about}</p>
-                                    </div> : null
+                                    </div>)
+                                    : selected === item.age &&
+                                    (<div>
+                                        <p>{item.about}</p>
+                                    </div>)
                                 }
                             </div>
                         ))
