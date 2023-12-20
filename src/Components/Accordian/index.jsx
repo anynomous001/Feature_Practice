@@ -30,7 +30,7 @@ export default function Accordian() {
             <div className="container">
                 {/* For Multi selection*/}
 
-                <button className='multi-btn' onClick={() => setMultiSelection(!multiSelection)}>Enable Multi Selection</button>
+                <button className='multi-btn' onClick={() => setMultiSelection(!multiSelection)}>Enable{`${multiSelection ? 'd' : ''}`} Multi Selection</button>
                 {/* For single selection*/}
                 {
                     data && data.length > 0 ? (
