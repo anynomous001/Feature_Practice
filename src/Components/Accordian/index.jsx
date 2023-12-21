@@ -36,16 +36,16 @@ export default function Accordian() {
                     data && data.length > 0 ? (
                         data.map(item => (
                             <div key={item.age} onClick={multiSelection ? () => handleMultiClick(item.age) : () => handleClick(item.age)}>
-                                <h2 >{item.name}</h2>
+                                <h2 className='h2'>{item.name}</h2>
                                 <span>+</span>
                                 {multiSelection ?
                                     multi.indexOf(item.age) !== -1 &&
-                                    (<div>
-                                        <p>{item.about}</p>
+                                    (<div className='answers'>
+                                        <p className='p'>{item.about}</p>
                                     </div>)
                                     : selected === item.age &&
-                                    (<div>
-                                        <p>{item.about}</p>
+                                    (<div className='answers'>
+                                        <p className='p'>{item.about}</p>
                                     </div>)
                                 }
                             </div>

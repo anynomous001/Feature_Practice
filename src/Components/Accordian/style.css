@@ -6,6 +6,7 @@ body {
     background-color: aquamarine;
     width: 70%;
     padding: 2em;
+    cursor: pointer;
 }
 
 .outer-container {
@@ -24,4 +25,26 @@ body {
     font-weight: 600;
     border: none;
     cursor: pointer;
+}
+
+.h2 {
+    font-size: 1.8rem;
+    display: inline-block;
+    margin-right: 5em;
+}
+
+span {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: aliceblue;
+}
+
+.answers {
+    background-color: brown;
+    padding: 1em;
 }
